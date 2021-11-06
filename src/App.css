@@ -1,0 +1,101 @@
+.Global {
+  font-family: Consolas;
+}
+
+.global-centor {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 150%;
+}
+
+/* Login */
+.login-typewriter {
+  display: inline-flex;
+  font-size: 150% !important;
+}
+
+#transparent-underscores {
+  color: transparent;
+}
+
+#password-field {
+  padding-top: 12%;
+}
+
+#password-form {
+  font-size: 2.5vh;
+  margin-top: 2.5vh;
+  width: 35vh !important;
+  height: 3.5vh;
+  text-align: center;
+}
+
+#wrong-password-text {
+  margin-top: 1vh;
+  font-size: 2vh !important;
+  text-align: center;
+  color: #460e0e;
+}
+
+/*Loading Screen*/
+#the-simp-big {
+  height: auto;
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+#loading-bar {
+  /*padding-top: 5%;*/
+}
+
+#modified-centor-loading {
+  padding-top: 7% !important;
+  text-align: center !important;
+}
+/* Character Build */
+#character-selection {
+  height: 60vh;
+  width: 60vh;
+}
+
+.input-boxes-character {
+  text-align-last: center;
+}
+
+.enter-username {
+  margin-top: 1.7vh;
+  margin-bottom: 1.7vh;
+}
+
+/*Gameboard*/
+
+.left-bar {
+  background-color: orange;
+}
+
+#character-photo {
+  width: 28vh;
+  height: 28vh;
+}
+
+.left-bar-separators {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+#player-title-text {
+  font-size: 1.7vh;
+  text-align: center;
+}
+
+#money-text {
+  font-size: 2.5vh;
+  text-align: center;
+  color: #0d5a0d;
+}
+
+#asset-list {
+  font-size: 1.8vh;
+}
