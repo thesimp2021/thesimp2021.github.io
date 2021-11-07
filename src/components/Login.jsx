@@ -44,7 +44,7 @@ const Login = () => {
                                 strings: nickNames,
                                 autoStart: true,
                                 loop: true,
-                                pauseFor: 750,
+                                pauseFor: 500,
                                 changeDeleteSpeed: 400,
                             }}
                         />

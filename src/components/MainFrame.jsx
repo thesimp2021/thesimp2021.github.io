@@ -1,18 +1,20 @@
 import React, {useState} from "react";
-import {characterDatabase, questionsDatabase, itemsDatabase} from '../database';
-import {Container, Button, Row, Col, Card} from "react-bootstrap";
+import {characterDatabase, itemsDatabase, purchaseTextDatabase} from '../database';
+import {Container, Button, Row, Col, Card, Modal} from "react-bootstrap";
 import _ from "lodash";
 
 
 const renderAssets = (assets) => {
   return (
       <Card body>
-          [Assets]
-          <ul id='asset-list'>
+          <b>[Items 👜]</b>
+          <ul id='asset-list' className='left-bar-separators'>
               {
                   itemsDatabase.map(item => {
-                      return assets.includes(item.id) && (
-                          <li>{item.codeName}</li>
+                      return (
+                          <li className='left-bar-separators'>
+                              {(assets && assets.includes(item.id)) ? <span>✅</span> : <span>⭕</span>}{item.codeName}
+                          </li>
                       );
                   })
               }
@@ -21,69 +23,101 @@ const renderAssets = (assets) => {
   );
 };
 
+const renderShopModal = (props) => {
+    const {
+        money,
+        setMoney,
+        assets,
+        setAssets,
+        purchaseText,
+        setPurchaseText,
+        isShopModalOpen,
+        setShopModalOpen
+    } = props;
+
+    const handleBuyClick = (price, itemId) => {
+        console.log(assets);
+        setMoney(prevMoney => prevMoney - price);
+        setAssets(prevAssets => [...prevAssets, itemId]);
+        setPurchaseText(purchaseTextDatabase[itemId]);
+    };
+
+    return (
+        <Modal
+            show={isShopModalOpen}
+            onHide={() => setShopModalOpen(false)}
+            size='xl'
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Shop
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <div className='item-list'>
+                    {itemsDatabase.filter(item => item.id === 0 || item.id === 1 || item.id === 2).map(item => {
+                        const isDisabled = assets.includes(item.id) || money < item.price;
+
+                        return (
+                            <Card className='item-card'>
+                                <Card.Header>{item.name} ${item.price}</Card.Header>
+                                <Card.Body>
+                                    <img className='item-photo' src={item.imageUrl} />
+                                    <div>
+                                        <Button
+                                            disabled={isDisabled}
+                                            variant='success'
+                                            onClick={() => handleBuyClick(item.price, item.id)}
+                                            size='sm'
+                                        >
+                                            purchase item
+                                        </Button>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                        );
+                    })}
+                </div>
+                <div className='item-list'>
+                    {itemsDatabase.filter(item => item.id === 3 || item.id === 4).map(item => {
+                        const isDisabled = assets.includes(item.id) || money < item.price;
+
+                        return (
+                            <Card className='item-card'>
+                                <Card.Header>{item.name} ${item.price}</Card.Header>
+                                <Card.Body>
+                                    <img className='item-photo' src={item.imageUrl} />
+                                    <div>
+                                        <Button
+                                            disabled={isDisabled}
+                                            variant='success'
+                                            onClick={() => handleBuyClick(item.price, item.id)}
+                                            size='sm'
+                                        >
+                                            purchase item
+                                        </Button>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                        );
+                    })}
+                </div>
+            </Modal.Body>
+        </Modal>
+    );
+}
+
 const MainFrame = (props) => {
     const playerName = _.get(props, 'location.state.playerName', '');
     const playerTitleId = _.get(props, 'location.state.playerTitleId', 0);
 
-    const [unlockedLevels, setUnlockedLevels] = useState(1);
-    const [bonusQuestion, setBonusQuestions] = useState(0);
-    const [selectedQuestion, setSelectedQuestion] = useState(questionsDatabase[1]);
+    const [isShopModalOpen, setShopModalOpen] = useState(false);
+    const [purchaseText, setPurchaseText] = useState('');
 
-    const [assets, setAssets] = useState([0, 1, 2, 3, 4]);
-    const [money, setMoney] = useState(5000);
-
-
-    const existingLevels = [1, 2, 3, 4, 5];
-
-    const handleBonusQuestion = () => {
-        setBonusQuestions(bonusQuestion + 1);
-        return {author: "iqi ganteng"};
-    }
-
-    const incrementCount = () => {
-        setUnlockedLevels(unlockedLevels + 1);
-        setSelectedQuestion(() => {
-            const balikan = questionsDatabase.find(question2 => question2.id === unlockedLevels + 1);
-
-            return balikan || handleBonusQuestion();
-        });
-        // setSelectedQuestion(selectedQuestion+1);
-    };
-
-    const RenderLevel = ({unlockedLevels, currentLevel, handleLevelUp}) => {
-        return (
-            unlockedLevels > currentLevel - 1 &&
-            <div>
-                bacot {currentLevel}
-                <button onClick={handleLevelUp}>+</button>
-            </div>
-        );
-    }
-
-    const RenderQuestion = ({question}) => {
-        return (
-            <div>{question.author}</div>
-        );
-    }
-
-    const renderRame = () => {
-        return (
-            <div>
-                <span>bonus level: {bonusQuestion}<br></br></span>
-                <span>current level: {unlockedLevels}</span>
-                {
-                    existingLevels.map(level =>
-                        <RenderLevel
-                            unlockedLevels={unlockedLevels}
-                            currentLevel={level}
-                            handleLevelUp={incrementCount}
-                        />
-                    )
-                }
-                <RenderQuestion question={selectedQuestion}/>
-            </div>
-        );
-    };
+    const [assets, setAssets] = useState([]);
+    const [money, setMoney] = useState(8000);
 
     return (
         <>
@@ -93,17 +127,32 @@ const MainFrame = (props) => {
                         <div className='left-bar-separators'>
                             <b>Hello, {playerName}!</b>
                         </div>
-                        <img className='left-bar-separators' cl src={characterDatabase[playerTitleId].imageUrl} id='character-photo'/>
+                        <img className='left-bar-separators' src={characterDatabase[playerTitleId].imageUrl} id='character-photo'/>
                         <div className='left-bar-separators' id='player-title-text'>
                             <b><u>"{characterDatabase[playerTitleId].title}"</u></b>
                         </div>
                         <div className='left-bar-separators' id='money-text'>
-                            <b>💸${money}</b>a
+                            <b>💸${money}</b>
                         </div>
                         {renderAssets(assets)}
+                        <Button variant='primary' onClick={() => setShopModalOpen(true)}>
+                            Open shop
+                        </Button>
+                        {renderShopModal(
+                            {
+                                money,
+                                setMoney,
+                                assets,
+                                setAssets,
+                                purchaseText,
+                                setPurchaseText,
+                                isShopModalOpen,
+                                setShopModalOpen
+                            }
+                        )}
                     </Col>
                     <Col lg={10} md={10} sm={10} xl={10} xs={10} xxl={10}>
-                        {renderRame()}
+                        kenape
                     </Col>
                 </Row>
             </Container>

@@ -97,5 +97,25 @@
 }
 
 #asset-list {
-  font-size: 1.8vh;
+  font-size: 2vh;
+  list-style-type:none;
+}
+
+.item-photo {
+  width: 20vh;
+  height: 20vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.item-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5vh;
+}
+
+.item-card {
+  margin-left: 1vh;
+  margin-right: 1vh;
 }
