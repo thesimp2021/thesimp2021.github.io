@@ -18,11 +18,11 @@ import putrigaluh from '../src/assets/images/wishes/putrigaluh.jpg';
 import resty from '../src/assets/images/wishes/resty.jpg';
 import salza from '../src/assets/images/wishes/salza.jpg';
 
-import bangkok from '../src/assets/images/cities/bangkok.png';
-import jakarta from '../src/assets/images/cities/jakarta.png';
-import belgrade from '../src/assets/images/cities/belgrade.png';
-import semarang from '../src/assets/images/cities/semarang.png';
-import bandung from '../src/assets/images/cities/bandung.png';
+import bangkok from '../src/assets/images/cities/bangkok2.jpg';
+import jakarta from '../src/assets/images/cities/jakarta2.jpg';
+import belgrade from '../src/assets/images/cities/belgrade2.jpg';
+import semarang from '../src/assets/images/cities/semarang2.jpg';
+import bandung from '../src/assets/images/cities/bandung2.jpg';
 
 
 export const levelsDatabase = [
