@@ -65,7 +65,7 @@ const renderShopModal = (props) => {
                                 <Card.Header>{item.name} ${item.price}</Card.Header>
                                 <Card.Body>
                                     <img className='item-photo' src={item.imageUrl} />
-                                    <div>
+                                    <div id='purchase-action-button'>
                                         <Button
                                             disabled={isDisabled}
                                             variant='success'
@@ -89,7 +89,7 @@ const renderShopModal = (props) => {
                                 <Card.Header>{item.name} ${item.price}</Card.Header>
                                 <Card.Body>
                                     <img className='item-photo' src={item.imageUrl} />
-                                    <div>
+                                    <div id='purchase-action-button'>
                                         <Button
                                             disabled={isDisabled}
                                             variant='success'
@@ -135,9 +135,12 @@ const MainFrame = (props) => {
                             <b>💸${money}</b>
                         </div>
                         {renderAssets(assets)}
-                        <Button variant='primary' onClick={() => setShopModalOpen(true)}>
-                            Open shop
-                        </Button>
+                        <div className='shopping-cart-image'>🛒</div>
+                        <div className='left-bar-separators' id='shop-button'>
+                            <Button variant='success' size='sm' onClick={() => setShopModalOpen(true)}>
+                                JAJAN ATUH!
+                            </Button>
+                        </div>
                         {renderShopModal(
                             {
                                 money,

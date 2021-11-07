@@ -119,3 +119,22 @@
   margin-left: 1vh;
   margin-right: 1vh;
 }
+
+#shop-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+}
+
+#purchase-action-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+}
+
+.shopping-cart-image {
+  text-align: center;
+  font-size:14.5vh;
+}
