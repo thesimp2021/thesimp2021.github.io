@@ -1,17 +1,36 @@
 import queen from '../src/assets/images/characters/queen.jpg';
 import leftist from '../src/assets/images/characters/leftist.jpg';
 import imaginary from '../src/assets/images/characters/imaginary.jpg';
+
 import ticketPic from '../src/assets/images/items/item-ticket.png';
 import netflixPic from '../src/assets/images/items/item-netflix.png';
 import cameraPic from '../src/assets/images/items/item-camera.png';
 import cdgPic from '../src/assets/images/items/item-cdg.png';
 import coffeePic from '../src/assets/images/items/item-coffee.png';
 
-const levelsDatabase = [
+import alfat from '../src/assets/images/wishes/alfat.jpg';
+import alifirza from '../src/assets/images/wishes/alifirza.jpg';
+import azka from '../src/assets/images/wishes/azka.jpg';
+import jeje from '../src/assets/images/wishes/jeje.jpg';
+import kevin from '../src/assets/images/wishes/kevin.jpg';
+import mae from '../src/assets/images/wishes/mae.jpg';
+import putrigaluh from '../src/assets/images/wishes/putrigaluh.jpg';
+import resty from '../src/assets/images/wishes/resty.jpg';
+import salza from '../src/assets/images/wishes/salza.jpg';
+
+import bangkok from '../src/assets/images/cities/bangkok.png';
+import jakarta from '../src/assets/images/cities/jakarta.png';
+import belgrade from '../src/assets/images/cities/belgrade.png';
+import semarang from '../src/assets/images/cities/semarang.png';
+import bandung from '../src/assets/images/cities/bandung.png';
+
+
+export const levelsDatabase = [
   {
     id: 0,
-    rewardPerQuestion: 0,
-    imageUrl: null,
+    rewardPerQuestion: 500,
+    cityName: '<Semarang>',
+    imageUrl: semarang,
     quizzes: [
       {
         id: 0,
@@ -56,7 +75,7 @@ const levelsDatabase = [
           "becoming sugar baby"
         ],
         correctAnswerId: 1,
-        imageUrl: true
+        imageUrl: jeje
       },
       {
         id: 3,
@@ -89,8 +108,9 @@ const levelsDatabase = [
   },
   {
     id: 1,
-    rewardPerQuestion: 0,
-    imageUrl: null,
+    rewardPerQuestion: 900,
+    cityName: '<Bangkok>',
+    imageUrl: bangkok,
     quizzes: [
       {
         id: 0,
@@ -105,7 +125,7 @@ const levelsDatabase = [
           "Baby Driver"
         ],
         correctAnswerId: 2,
-        imageUrl: true
+        imageUrl: kevin
       },
       {
         id: 1,
@@ -120,7 +140,7 @@ const levelsDatabase = [
           "Geckos"
         ],
         correctAnswerId: 1,
-        imageUrl: null
+        imageUrl: azka
       },
       {
         id: 2,
@@ -133,7 +153,7 @@ const levelsDatabase = [
           "Love"
         ],
         correctAnswerId: 0,
-        imageUrl: null
+        imageUrl: resty
       },
       {
         id: 3,
@@ -148,7 +168,7 @@ const levelsDatabase = [
           "Sing for me",
         ],
         correctAnswerId: 3,
-        imageUrl: true
+        imageUrl: mae
       },
       {
         id: 4,
@@ -169,8 +189,9 @@ const levelsDatabase = [
   },
   {
     id: 2,
-    rewardPerQuestion: 0,
-    imageUrl: null,
+    rewardPerQuestion: 1500,
+    cityName: '<Belgrade>',
+    imageUrl: belgrade,
     quizzes: [
       {
         id: 0,
@@ -215,11 +236,11 @@ const levelsDatabase = [
           "Suga"
         ],
         correctAnswerId: 3,
-        imageUrl: true
+        imageUrl: salza
       },
       {
         id: 3,
-        authorName: "Alfirza Dafrin Achmad Ichwani",
+        authorName: "Alifirza Dafrin Achmad Ichwani",
         authorCoolName: "Rocks D Xebec",
         wish: "Happy birthday mutt, wish you all the best, semangat buat kita (Azka juga) skripsiannya wkwk",
         questionText: "Which football club do i support?",
@@ -230,7 +251,7 @@ const levelsDatabase = [
           "Chelsea FC"
         ],
         correctAnswerId: 2,
-        imageUrl: true
+        imageUrl: alifirza
       },
       {
         id: 4,
@@ -251,8 +272,9 @@ const levelsDatabase = [
   },
   {
     id: 3,
-    rewardPerQuestion: 0,
-    imageUrl: null,
+    rewardPerQuestion: 2500,
+    cityName: '<Bandung>',
+    imageUrl: bandung,
     quizzes: [
       {
         id: 0,
@@ -282,7 +304,7 @@ const levelsDatabase = [
           "Jadi siluman"
         ],
         correctAnswerId: 1,
-        imageUrl: true
+        imageUrl: putrigaluh
       },
       {
         id: 2,
@@ -309,7 +331,7 @@ const levelsDatabase = [
           "Bigbang"
         ],
         correctAnswerId: 0,
-        imageUrl: true
+        imageUrl: alfat
       },
       {
         id: 4,
@@ -327,6 +349,13 @@ const levelsDatabase = [
         imageUrl: null
       }
     ]
+  },
+  {
+    id: 4,
+    rewardPerQuestion: 2500,
+    cityName: '<Jakarta>',
+    imageUrl: jakarta,
+    quizzes: []
   }
 ];
 
@@ -367,7 +396,7 @@ export const itemsDatabase = [
     id: 2,
     name: 'Cam Ribettt!',
     codeName: '📷 Camera',
-    price: 3500,
+    price: 3600,
     imageUrl: cameraPic
   },
   {

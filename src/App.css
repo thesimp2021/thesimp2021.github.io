@@ -91,7 +91,7 @@
 }
 
 #money-text {
-  font-size: 2.5vh;
+  font-size: 4vh;
   text-align: center;
   color: #0d5a0d;
 }
@@ -136,5 +136,39 @@
 
 .shopping-cart-image {
   text-align: center;
-  font-size:14.5vh;
+  font-size:13vh;
+}
+
+#purchase-text {
+  color: maroon;
+}
+
+.level-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1.5vh;
+}
+
+.level-photo {
+  width: 35vh;
+  height: 35vh;
+}
+
+.level-cards {
+  margin: 2vh;
+}
+
+.city-names {
+  font-size: 2.5vh;
+  text-align: center;
+}
+
+.level-buttons {
+  margin-top: 1vh;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
 }

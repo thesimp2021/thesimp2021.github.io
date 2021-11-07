@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {characterDatabase, itemsDatabase, purchaseTextDatabase} from '../database';
+import {characterDatabase, itemsDatabase, levelsDatabase, purchaseTextDatabase} from '../database';
 import {Container, Button, Row, Col, Card, Modal} from "react-bootstrap";
 import _ from "lodash";
 
@@ -13,7 +13,7 @@ const renderAssets = (assets) => {
                   itemsDatabase.map(item => {
                       return (
                           <li className='left-bar-separators'>
-                              {(assets && assets.includes(item.id)) ? <span>✅</span> : <span>⭕</span>}{item.codeName}
+                              {(assets && assets.includes(item.id)) ? <span>✅ </span> : <span>⭕ </span>}{item.codeName}
                           </li>
                       );
                   })
@@ -36,7 +36,6 @@ const renderShopModal = (props) => {
     } = props;
 
     const handleBuyClick = (price, itemId) => {
-        console.log(assets);
         setMoney(prevMoney => prevMoney - price);
         setAssets(prevAssets => [...prevAssets, itemId]);
         setPurchaseText(purchaseTextDatabase[itemId]);
@@ -45,14 +44,17 @@ const renderShopModal = (props) => {
     return (
         <Modal
             show={isShopModalOpen}
-            onHide={() => setShopModalOpen(false)}
+            onHide={() => {
+                setPurchaseText('');
+                setShopModalOpen(false);
+            }}
             size='xl'
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Shop
+                    Shop 🏪 {purchaseText !== '' && <span id='purchase-text'><b>"{purchaseText}"</b></span>}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -117,7 +119,28 @@ const MainFrame = (props) => {
     const [purchaseText, setPurchaseText] = useState('');
 
     const [assets, setAssets] = useState([]);
-    const [money, setMoney] = useState(8000);
+    const [money, setMoney] = useState(50000);
+
+    const renderIndidualLevel = (levelInfo) => {
+        return (
+            <Card bg='dark' text='white' className='level-cards'>
+                <Card.Header>
+                    <div className='city-names'><b>{levelInfo.cityName}</b></div>
+                </Card.Header>
+                <Card.Body>
+                    <img src={levelInfo.imageUrl} className='level-photo'/>
+                    <div className='level-buttons'>
+                        <Button size='sm'>
+                            ⓘ
+                        </Button>
+                        <Button size='sm' variant='danger'>
+                            hayuk atuh!
+                        </Button>
+                    </div>
+                </Card.Body>
+            </Card>
+        );
+    }
 
     return (
         <>
@@ -155,7 +178,11 @@ const MainFrame = (props) => {
                         )}
                     </Col>
                     <Col lg={10} md={10} sm={10} xl={10} xs={10} xxl={10}>
-                        kenape
+                        <Row>
+                            <div className='level-list'>
+                                {levelsDatabase.map(individualLevel => renderIndidualLevel(individualLevel))}
+                            </div>
+                        </Row>
                     </Col>
                 </Row>
             </Container>
