@@ -1,8 +1,4 @@
-const handleSelectAnswer = ()
-if (correctAnswer) {
-
-}
-
+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
 my perfect future of apps is entirely made by web
 
 i had a lot of fun doing math and computer problems, this is my love letter written fully in javascript,
@@ -14,4 +10,8 @@ movie tix -> coffee -> cam ->  cdg -> netflix acc
 semarang (cinema) -> bangkok (coffee/restaurant) -> serbia(good picx, city views) -> bandung (puncak) -> bed netflix and chill
 temen2 undip -> debating friends -> another temen2 debate -> temen2 jauh -> iqi
 
+i hate frontend programming, but i manage to go through it, code deployment, project setup
 
+this app is inspired by derekdelgaudio, identity "the rook/mechanic", the 5 thumbnail level display, rouletista
+
+benerin font

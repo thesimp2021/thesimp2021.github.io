@@ -98,7 +98,7 @@ const MainFrame = (props) => {
                             <b><u>"{characterDatabase[playerTitleId].title}"</u></b>
                         </div>
                         <div className='left-bar-separators' id='money-text'>
-                            <b>💸${money}</b>
+                            <b>💸${money}</b>a
                         </div>
                         {renderAssets(assets)}
                     </Col>
