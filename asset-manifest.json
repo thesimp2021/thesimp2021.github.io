@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.4314114c.chunk.css",
-    "main.js": "/static/js/main.750a063c.chunk.js",
-    "main.js.map": "/static/js/main.750a063c.chunk.js.map",
+    "main.js": "/static/js/main.d3f70ad6.chunk.js",
+    "main.js.map": "/static/js/main.d3f70ad6.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.650b2ba5.js",
     "runtime-main.js.map": "/static/js/runtime-main.650b2ba5.js.map",
     "static/css/2.0a9ec390.chunk.css": "/static/css/2.0a9ec390.chunk.css",
@@ -17,16 +17,16 @@
     "static/media/alfat.c9a290b5.jpg": "/static/media/alfat.c9a290b5.jpg",
     "static/media/alifirza.b90245e2.jpg": "/static/media/alifirza.b90245e2.jpg",
     "static/media/azka.aaed0c5a.jpg": "/static/media/azka.aaed0c5a.jpg",
-    "static/media/bandung.457948e5.png": "/static/media/bandung.457948e5.png",
-    "static/media/bangkok.ad9e7b5a.png": "/static/media/bangkok.ad9e7b5a.png",
-    "static/media/belgrade.ff7b2df8.png": "/static/media/belgrade.ff7b2df8.png",
+    "static/media/bandung2.2dacd58d.jpg": "/static/media/bandung2.2dacd58d.jpg",
+    "static/media/bangkok2.92e7f729.jpg": "/static/media/bangkok2.92e7f729.jpg",
+    "static/media/belgrade2.1f7a8028.jpg": "/static/media/belgrade2.1f7a8028.jpg",
     "static/media/imaginary.6d6d4c62.jpg": "/static/media/imaginary.6d6d4c62.jpg",
     "static/media/item-camera.327ab2aa.png": "/static/media/item-camera.327ab2aa.png",
     "static/media/item-cdg.758aaaf3.png": "/static/media/item-cdg.758aaaf3.png",
     "static/media/item-coffee.72cc8580.png": "/static/media/item-coffee.72cc8580.png",
     "static/media/item-netflix.8612c27e.png": "/static/media/item-netflix.8612c27e.png",
     "static/media/item-ticket.58c3b9e7.png": "/static/media/item-ticket.58c3b9e7.png",
-    "static/media/jakarta.f221ae4f.png": "/static/media/jakarta.f221ae4f.png",
+    "static/media/jakarta2.a7f9abae.jpg": "/static/media/jakarta2.a7f9abae.jpg",
     "static/media/jeje.e8ac6957.jpg": "/static/media/jeje.e8ac6957.jpg",
     "static/media/kevin.6111636e.jpg": "/static/media/kevin.6111636e.jpg",
     "static/media/leftist.1fd9b721.jpg": "/static/media/leftist.1fd9b721.jpg",
@@ -35,7 +35,7 @@
     "static/media/queen.66e025b5.jpg": "/static/media/queen.66e025b5.jpg",
     "static/media/resty.9af91f4c.jpg": "/static/media/resty.9af91f4c.jpg",
     "static/media/salza.99665381.jpg": "/static/media/salza.99665381.jpg",
-    "static/media/semarang.926b7660.png": "/static/media/semarang.926b7660.png",
+    "static/media/semarang2.6b201e70.jpg": "/static/media/semarang2.6b201e70.jpg",
     "static/media/simp-loading-image.64513f36.png": "/static/media/simp-loading-image.64513f36.png"
   },
   "entrypoints": [
@@ -43,6 +43,6 @@
     "static/css/2.0a9ec390.chunk.css",
     "static/js/2.e084bca2.chunk.js",
     "static/css/main.4314114c.chunk.css",
-    "static/js/main.750a063c.chunk.js"
+    "static/js/main.d3f70ad6.chunk.js"
   ]
 }
