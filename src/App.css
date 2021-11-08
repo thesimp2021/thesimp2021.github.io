@@ -156,6 +156,11 @@
   height: 35vh;
 }
 
+.wish-photo {
+  width: 50vh;
+  height: 50vh;
+}
+
 .level-cards {
   margin: 2vh;
 }
@@ -171,4 +176,12 @@
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
+}
+
+.city-info-body {
+  text-align: justify;
+}
+
+.required-item-text {
+  text-align: center;
 }

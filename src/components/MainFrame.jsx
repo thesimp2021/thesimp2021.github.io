@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {characterDatabase, itemsDatabase, levelsDatabase, purchaseTextDatabase} from '../database';
-import {Container, Button, Row, Col, Card, Modal} from "react-bootstrap";
+import {Container, Button, Row, Col, Card, Modal, Stack} from "react-bootstrap";
 import _ from "lodash";
 
 
@@ -13,7 +13,7 @@ const renderAssets = (assets) => {
                   itemsDatabase.map(item => {
                       return (
                           <li className='left-bar-separators'>
-                              {(assets && assets.includes(item.id)) ? <span>✅ </span> : <span>⭕ </span>}{item.codeName}
+                              {(assets && assets.includes(item.id)) ? <span>✅ </span> : <span>❌ </span>}{item.codeName}
                           </li>
                       );
                   })
@@ -34,20 +34,25 @@ const MainFrame = (props) => {
     const [money, setMoney] = useState(50000);
 
     const [isQuizModalOpen, setIsQuizModalOpen] = useState(false);
-    const [unlockedLevel, setUnlockedLevel] = useState(-1);
+    const [selectedLevel, setSelectedLevel] = useState(0);
+    const [hasBoughtTicket, setHasBoughtTicket] = useState(false);
     const [isCurrentLevelAllAnswered, setIsCurrentLevelAllAnswered] = useState(false);
     const [isCurrentQuestionAnswered, setIsCurrentQuestionAnswered] = useState(false);
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
     const [totalCorrectAnswers, setTotalCorrectAnswers] = useState(0);
-
     //di final display, correct answers - 5 (soale ada bonus questions di tiap level)
+
+
+    const [isCityInfoModalOpen, setIsCityInfoModalOpen] = useState(false);
+    const [selectedCityInfoId, setSelectedCityInfoId] = useState(0);
 
     const renderShopModal = () => {
         const handleBuyClick = (price, itemId) => {
             setMoney(prevMoney => prevMoney - price);
             setAssets(prevAssets => [...prevAssets, itemId]);
             setPurchaseText(purchaseTextDatabase[itemId]);
-            setUnlockedLevel(prevUnlockedLevel => prevUnlockedLevel+1);
+            setHasBoughtTicket(true);
+            setSelectedLevel(selectedLevel === 0 && !isCurrentLevelAllAnswered ? selectedLevel : selectedLevel+1);
             setIsCurrentLevelAllAnswered(false);
         };
 
@@ -64,7 +69,7 @@ const MainFrame = (props) => {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Shop 🏪 {purchaseText !== '' && <span id='purchase-text'><b>"{purchaseText}"</b></span>}
+                        Shop 🏪 {purchaseText !== '' && <span id='purchase-text'><b> | "{purchaseText}"</b></span>}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -122,13 +127,29 @@ const MainFrame = (props) => {
     }
 
     const renderQuizModal = () => {
+        const renderSubmitFinalLevelButton = () => {
+            return (
+                <Button
+                    onClick={
+                        () => {
+                            setIsQuizModalOpen(false);
+                            setIsCurrentQuestionAnswered(false);
+                            setCurrentQuestionId(0);
+                            setIsCurrentLevelAllAnswered(true);
+                        }
+                    }
+                >
+                    Submit Final Level
+                </Button>
+            );
+        }
+
         const renderFinishLevelButton = () => {
             return (
                 <Button
                     onClick={
                         () => {
                             setIsQuizModalOpen(false);
-                            setUnlockedLevel(unlockedLevel + 1);
                             setIsCurrentQuestionAnswered(false);
                             setCurrentQuestionId(0);
                             setIsCurrentLevelAllAnswered(true);
@@ -148,29 +169,102 @@ const MainFrame = (props) => {
                         setCurrentQuestionId(currentQuestionId+1);
                     }}
                 >
-                    Finish Level
+                    Next Question
                 </Button>
             )
         };
 
-        return
+        const {
+            id,
+            authorName,
+            authorCoolName,
+            questionText,
+            wish,
+            questionOptions,
+            correctAnswerId,
+            imageUrl
+        } = levelsDatabase[selectedLevel].quizzes[currentQuestionId];
+
+        return (
+            <Modal
+                show={isQuizModalOpen}
+                onHide={() => setIsQuizModalOpen(false)}
+                size='xl'
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header>
+                    {authorName} - {authorCoolName}
+                </Modal.Header>
+                <Modal.Body>
+                    <Stack gap={3}>
+                        <div>
+                            Pala atas
+                            <Stack direction='horizontal' gap={3}>
+                                {!_.isNil(imageUrl)
+                                && <div><img src={imageUrl} className='wish-photo'/>
+                                </div>
+                                }
+                                <div>{wish}</div>
+                            </Stack>
+                        </div>
+                        <div>pala bawah{selectedLevel === 4 ? renderSubmitFinalLevelButton() :
+                            (currentQuestionId === 3 ? renderFinishLevelButton() : renderNextQuestionButton())
+                        }</div>
+                    </Stack>
+                </Modal.Body>
+            </Modal>
+        );
+    }
+
+    const renderCityInfoModal = () => {
+        return (
+          <Modal
+              show={isCityInfoModalOpen}
+              onHide={() => setIsCityInfoModalOpen(false)}
+              size='xl'
+              aria-labelledby="contained-modal-title-vcenter"
+              centered
+          >
+              <Modal.Header className='city-title' closeButton>
+                  <Modal.Title id="contained-modal-title-vcenter">
+                      <b>CITY INFO - <u>{levelsDatabase[selectedCityInfoId].cityName}</u></b>
+                  </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                  <div className='city-info-body'>
+                      <p>&nbsp;&nbsp;&nbsp;&nbsp;{levelsDatabase[selectedCityInfoId].description}</p>
+                      <p>{levelsDatabase[selectedCityInfoId].requiredItemDesc}</p>
+                      <p className='required-item-text'><b>🔓 Required item</b>: {itemsDatabase[selectedCityInfoId].codeName}</p>
+                      <p className='required-item-text'><b>💵 Reward per-question</b>: ${levelsDatabase[selectedCityInfoId].rewardPerQuestion}</p>
+                  </div>
+              </Modal.Body>
+          </Modal>
+        );
     }
 
     const renderIndidualLevel = (levelInfo,levelIndex) => {
         return (
             <Card bg='dark' text='white' className='level-cards'>
-                <Card.Header>
-                    <div className='city-names'><b>{levelInfo.cityName}</b></div>
+                <Card.Header >
+                    <div className='city-names'><b>{`< ${levelInfo.cityName} >`}</b></div>
                 </Card.Header>
                 <Card.Body>
                     <img src={levelInfo.imageUrl} className='level-photo'/>
                     <div className='level-buttons'>
-                        <Button size='sm'>
+                        <Button
+                            onClick={() => {
+                                setSelectedCityInfoId(levelIndex);
+                                setIsCityInfoModalOpen(true);
+                            }}
+                            size='sm'
+                        >
                             ⓘ
                         </Button>
                         <Button
-                            disabled={unlockedLevel !== levelIndex || isCurrentLevelAllAnswered}
-                            onClick={() => setIsCurrentLevelAllAnswered(true)}
+                            disabled={!hasBoughtTicket || selectedLevel !== levelIndex || isCurrentLevelAllAnswered}
+                            //selectedLevel !== levelIndex || unlockedLevel !== levelIndex || isCurrentLevelAllAnswered
+                            onClick={() => setIsQuizModalOpen(true)}
                             size='sm'
                             variant='danger'
                         >
@@ -205,6 +299,8 @@ const MainFrame = (props) => {
                             </Button>
                         </div>
                         {renderShopModal()}
+                        {renderCityInfoModal()}
+                        {renderQuizModal()}
                     </Col>
                     <Col lg={10} md={10} sm={10} xl={10} xs={10} xxl={10}>
                         <Row>

@@ -29,15 +29,17 @@ export const levelsDatabase = [
   {
     id: 0,
     rewardPerQuestion: 500,
-    cityName: '<Semarang>',
+    cityName: 'Semarang',
     imageUrl: semarang,
+    description: "Ahh yes, the good ol' Semarang. The place where you were born, raised, and have become atteched to. Just like you, this city is hot as fuck! The blistering heat is the result of the good ol' capitalists that continues to extract... Aye holup this aint no leftist propagand LMAO. Besides the heat, the downside of this city is that they aint got no IMAX studio. How am I supposed to see that 70mm IMAX film bro?",
+    requiredItemDesc: 'Welp, at least there\'s a fancy DP mall that got a fancy movie theater. buy some tix, lets check the mall out yeah?',
     quizzes: [
       {
         id: 0,
         authorName: "NADIA NURSAIDATINA AP ",
         authorCoolName: "anonymous",
-        wish: "Which beverage fits my personality best?",
-        questionText: "Happy birthday kak mutiiii! Wish u all the best. Tbh kakak role model fav aku di debatee. Semoga apa dimau tercapai ya kak!!",
+        questionText: "Which beverage fits my personality best?",
+        wish: "Happy birthday kak mutiiii! Wish u all the best. Tbh kakak role model fav aku di debatee. Semoga apa dimau tercapai ya kak!!",
         questionOptions: [
           "coffee" ,
           "tea" ,
@@ -101,7 +103,7 @@ export const levelsDatabase = [
             "Kanye",
             "Iqi himself"
         ],
-        correctAnswerId: 1,
+        correctAnswerId: 3,
         imageUrl: null
       }
     ]
@@ -109,8 +111,10 @@ export const levelsDatabase = [
   {
     id: 1,
     rewardPerQuestion: 900,
-    cityName: '<Bangkok>',
+    cityName: 'Bangkok',
     imageUrl: bangkok,
+    description: "Skidi pap pap sawadikap, pap dulu atuh!!!! It means \"welcome to bangkok, we're so excited to see you!\". As you get better in your debating career, you finally get the chance to represent ur uni at World's Universities Trashtalking Championship. It's a tourney where a bunch of white bois beating up native ching-chong people through a not-so intellectual deathmatch. Welp, too bad u're not white, nor a boi, so good luck with that lmao. But this city looks dope if you wanna stroll around. Perhaps you can visit that legendary bridge where u can take photos then use it as all of your social media profile pictures 😏",
+    requiredItemDesc: '... or maybe you could just prep your totebag, a nihilist novel, and hang out at a local coffee shop. The love of ur life might be there, sipping a hot chocolate... and ready to bangcock u feel? welp, let\'s find out!',
     quizzes: [
       {
         id: 0,
@@ -190,8 +194,10 @@ export const levelsDatabase = [
   {
     id: 2,
     rewardPerQuestion: 1500,
-    cityName: '<Belgrade>',
+    cityName: 'Belgrade',
     imageUrl: belgrade,
+    description: "If only the last 3 letters of this city was 'ium', I'd definitely give it a visit. Too bad it's Belgrade, not Belgium. Welp, ionno nut'n bout this semi third-world europian city. I mean let's be real, when World's is held in Europe, none of us would expect it to be held in nowhereland such as Belgrade right? But hey, even tho it ain't paris, thank god yain't livin in a parallel universe where there's a global pandemic and yall must compete online (that wudve been sux). ",
+    requiredItemDesc: 'There\'s a tourism complex located down town, it looks surprisingly familiar to \'Kota Lama\' in Semarang, you beta check that out before it goes belgraded... (giddit? degrade-belgrade lmao) . Oh yeah, be sure to keep them flashlight on while u use ur camera, cz u dont want the pictures to be broken amirite? 😏',
     quizzes: [
       {
         id: 0,
@@ -273,8 +279,10 @@ export const levelsDatabase = [
   {
     id: 3,
     rewardPerQuestion: 2500,
-    cityName: '<Bandung>',
+    cityName: 'Bandung',
     imageUrl: bandung,
+    description: "Legend says that this is the Paris of Java Island. Tbh, it kinda lives up to that name. It has a beautiful down-town scenery in Braga with a europian-esque vibe. Offers hundreds, if not, thousands of culinary goods. Because the paris is also well-known for its lovey dovey vibe, this city provides the same thing, you can definitely have one in a local shady villa around the hills. The only puncak that you'll see in this city is puncak kenikmatan. 100% guaranteed!",
+    requiredItemDesc: 'Beware of sexual predators! One of them goes by the initial of V.M. (stands for virtual machine yall, chill tf down, go look dasshit up issa computer science term u tech illiterate muggles 😠). Buy one of em Cibaduyut shoez ma fwen, cz we be on a hike!\n',
     quizzes: [
       {
         id: 0,
@@ -284,7 +292,7 @@ export const levelsDatabase = [
         questionText: "do you think I am an otaku?",
         questionOptions: [
           "yes" ,
-          "maybe" ,
+          "kinda" ,
           "no" ,
           "definitely"
         ],
@@ -353,9 +361,26 @@ export const levelsDatabase = [
   {
     id: 4,
     rewardPerQuestion: 2500,
-    cityName: '<Jakarta>',
+    cityName: 'Jakarta',
     imageUrl: jakarta,
-    quizzes: []
+    description: "Rampant capitalism, nation's worst air pollution, tons of business districts, beautiful housing with filthy slums around it, fancy cars, gorgeous night lights. If uncle monopoly was a real person, he'd defo buy a home in Jkt. This city is as lively as it is horrifying inside, you can see them rich wannabes be flexing balenciaga sweatshirts but be eating sate pinggir jalan, just to compensate their credit bills.",
+    requiredItemDesc: 'But hey, turns out the love of your life has fallen in love with the big durian, almost as much as he\'s in love with you. Having those two combined (because he loves efficiency), he decided to ask you to move in with him to jkt. Get em netflix account aight, skip them lousy ads from pirated websites, yaint broke no more. It\'s time to netflix and chill baby!!!!',
+    quizzes: [
+      {
+        id: 0,
+        authorName: "Maudy Widya Putri",
+        authorCoolName: "your admirer since Day1",
+        wish: "hai kak, i just want to tell you that you are really amazing! i cant take my eyes from you since the first day I joined UDF! i adore you really much hehe, happiest birthday kak muti!!! all the best for you❤️",
+        questionText: "do you think I am an otaku?",
+        questionOptions: [
+          "yes" ,
+          "kinda" ,
+          "no" ,
+          "definitely"
+        ],
+        correctAnswerId: 3,
+        imageUrl: null
+      }]
   }
 ];
 
@@ -387,7 +412,7 @@ export const itemsDatabase = [
   },
   {
     id: 1,
-    name: 'Janjiwa Coffee',
+    name: 'Sakitjiwa Coffee',
     codeName: '☕ Coffee',
     price: 2000,
     imageUrl: coffeePic
@@ -417,7 +442,7 @@ export const itemsDatabase = [
 
 export const purchaseTextDatabase = [
     "Anjay mo nonton film horror niye, mank brani? 😏",
-    "Ngopi terus bos, depresi tuh pasti tengah malem 👍",
+    "Cie gadapet diskon grab, keduluan pacar ya? 🙏",
     "TuHkaN fLasHliGhtNya rUsaKk!!!!11!!!1! 😫",
     "Cintailah ploduk2 Indonesia 🇮🇩",
     "No netflix chill only 👩‍❤️‍💋‍👨",
