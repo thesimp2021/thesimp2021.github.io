@@ -31,7 +31,7 @@ const MainFrame = (props) => {
     const [purchaseText, setPurchaseText] = useState('');
 
     const [assets, setAssets] = useState([]);
-    const [money, setMoney] = useState(50000);
+    const [money, setMoney] = useState(1000);
 
     const [isQuizModalOpen, setIsQuizModalOpen] = useState(false);
     const [selectedLevel, setSelectedLevel] = useState(0);
@@ -40,6 +40,13 @@ const MainFrame = (props) => {
     const [isCurrentQuestionAnswered, setIsCurrentQuestionAnswered] = useState(false);
     const [currentQuestionId, setCurrentQuestionId] = useState(0);
     const [totalCorrectAnswers, setTotalCorrectAnswers] = useState(0);
+    const [correctAnswerText, setCorrectAnswerText] = useState('');
+    const [isAnswerShown, setIsAnswerShown] = useState({
+        0: true,
+        1: true,
+        2: true,
+        3: true
+    });
     //di final display, correct answers - 5 (soale ada bonus questions di tiap level)
 
 
@@ -147,6 +154,7 @@ const MainFrame = (props) => {
         const renderFinishLevelButton = () => {
             return (
                 <Button
+                    variant='warning'
                     onClick={
                         () => {
                             setIsQuizModalOpen(false);
@@ -160,6 +168,24 @@ const MainFrame = (props) => {
                 </Button>
             )
         };
+
+        const handleAnswerClick = (index, correctAnswerId, questionOptions) => {
+            const isCorrect = currentQuestionId === 4 ? true : (index === correctAnswerId);
+            const selectedAnswer = `selected answer: ${questionOptions[index]} <-> `;
+            console.log (isCorrect);
+            setTotalCorrectAnswers(isCorrect ? totalCorrectAnswers+1 : totalCorrectAnswers);
+            setCorrectAnswerText(isCorrect ?
+                `${selectedAnswer} 🟢 correct answer: ${questionOptions[correctAnswerId]}` :
+                `${selectedAnswer} 🔴 correct answer: ${questionOptions[correctAnswerId]}`
+            )
+            setIsCurrentQuestionAnswered(true);
+            setMoney(isCorrect ?
+                currentQuestionId === 4 ?
+                    money + (itemsDatabase[selectedLevel+1].price - money) //logic salah
+                    : money + levelsDatabase[selectedLevel].rewardPerQuestion
+                : money)
+        }
+        //BUAT HANDLE ANSWERL CLICK FINAL LEVEL BIAR GA ITEM DATABASE INDEX OUT OF BOUND
 
         const renderNextQuestionButton = () => {
             return (
@@ -175,7 +201,6 @@ const MainFrame = (props) => {
         };
 
         const {
-            id,
             authorName,
             authorCoolName,
             questionText,
@@ -185,6 +210,56 @@ const MainFrame = (props) => {
             imageUrl
         } = levelsDatabase[selectedLevel].quizzes[currentQuestionId];
 
+        if (selectedLevel !== 4) {
+            return (
+                <Modal
+                    show={isQuizModalOpen}
+                    onHide={() => setIsQuizModalOpen(false)}
+                    size='xl'
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Body
+                        className='bg-transparent'
+                    >
+                        <div className='quiz-modal'>
+                            <Stack gap={3}>
+                                <div>
+                                    <Stack direction='horizontal' gap={3}>
+                                        {!_.isNil(imageUrl)
+                                        && <div className='quiz-modal-separator'><img src={imageUrl} className='wish-photo'/>
+                                        </div>
+                                        }
+                                        <div className='quiz-modal-separator city-info-body'><b>{authorCoolName}</b> 💬 says {wish}</div>
+                                    </Stack>
+                                </div>
+                                <div className='question-section'>
+                                    <div className='quiz-modal-separator  city-info-body text-center'>
+                                        "{questionText}" - <b>{authorName} 🤔</b>
+                                    </div>
+                                    <div className='quiz-modal-separator question-mapper'>
+                                        {isCurrentQuestionAnswered ? correctAnswerText :
+                                            questionOptions.map((option, index) => (
+                                                <Card
+                                                    className='quiz-modal-separator bg-dark padder'
+                                                    onClick={() => handleAnswerClick(index, correctAnswerId, questionOptions)}
+                                                >
+                                                    {option}
+                                                </Card>
+                                            ))}
+                                    </div>
+                                    <div className='quiz-modal-separator text-kanan'>
+                                        {isCurrentQuestionAnswered && (selectedLevel === 4 ? renderSubmitFinalLevelButton() :
+                                            (currentQuestionId === 4 ? renderFinishLevelButton() : renderNextQuestionButton()))}
+                                    </div>
+                                </div>
+                            </Stack>
+                        </div>
+                    </Modal.Body>
+                </Modal>
+            );
+        }
+
         return (
             <Modal
                 show={isQuizModalOpen}
@@ -193,25 +268,47 @@ const MainFrame = (props) => {
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
-                <Modal.Header>
-                    {authorName} - {authorCoolName}
-                </Modal.Header>
-                <Modal.Body>
-                    <Stack gap={3}>
-                        <div>
-                            Pala atas
-                            <Stack direction='horizontal' gap={3}>
-                                {!_.isNil(imageUrl)
-                                && <div><img src={imageUrl} className='wish-photo'/>
+                <Modal.Body
+                    className='bg-transparent'
+                >
+                    <div className='quiz-modal'>
+                        <Stack gap={3}>
+                            <div>
+                                <Stack direction='horizontal' gap={3}>
+                                    {!_.isNil(imageUrl)
+                                    && <div className='quiz-modal-separator'><img src={imageUrl} className='wish-photo'/>
+                                    </div>
+                                    }
+                                    <div className='quiz-modal-separator city-info-body'><b>{authorCoolName}</b> 💬 says {wish}</div>
+                                </Stack>
+                            </div>
+                            <div className='question-section'>
+                                <div className='quiz-modal-separator  city-info-body text-center'>
+                                    "{questionText}" - <b>{authorName} 🤔</b>
                                 </div>
-                                }
-                                <div>{wish}</div>
-                            </Stack>
-                        </div>
-                        <div>pala bawah{selectedLevel === 4 ? renderSubmitFinalLevelButton() :
-                            (currentQuestionId === 3 ? renderFinishLevelButton() : renderNextQuestionButton())
-                        }</div>
-                    </Stack>
+                                <div className='quiz-modal-separator question-mapper'>
+                                    {isCurrentQuestionAnswered ? correctAnswerText :
+                                        questionOptions.map((option, index) => {
+                                            return isAnswerShown[index] && (
+                                                <Card
+                                                    onMouseEnter={() => setIsAnswerShown(prevState => ({
+                                                        ...prevState,
+                                                        [index]: index === 2,
+                                                    }))}
+                                                    className='quiz-modal-separator bg-dark padder'
+                                                    onClick={() => handleAnswerClick(index, correctAnswerId, questionOptions)}
+                                                >
+                                                    {option}
+                                                </Card>
+                                            );
+                                        })}
+                                </div>
+                                <div className='quiz-modal-separator text-kanan'>
+                                    {isCurrentQuestionAnswered && renderSubmitFinalLevelButton()}
+                                </div>
+                            </div>
+                        </Stack>
+                    </div>
                 </Modal.Body>
             </Modal>
         );
@@ -259,11 +356,10 @@ const MainFrame = (props) => {
                             }}
                             size='sm'
                         >
-                            ⓘ
+                            🔎
                         </Button>
                         <Button
                             disabled={!hasBoughtTicket || selectedLevel !== levelIndex || isCurrentLevelAllAnswered}
-                            //selectedLevel !== levelIndex || unlockedLevel !== levelIndex || isCurrentLevelAllAnswered
                             onClick={() => setIsQuizModalOpen(true)}
                             size='sm'
                             variant='danger'

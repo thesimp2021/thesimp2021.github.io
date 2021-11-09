@@ -179,14 +179,14 @@ export const levelsDatabase = [
         authorName: "J.A.R.V.I.S",
         authorCoolName: "Anti-noob bot",
         wish: 'hbd y, ni bonus question, mo salah/bener pokoke dapet duit biar level up oawkoakwkoaw, noob u',
-        questionText: "Apa warna favorit Iqi?",
+        questionText: "Siapa yg paling cakep?",
         questionOptions: [
-          "Hitam",
-          "Putih",
-          "Hijau",
-          "Merah"
+          "Salma Ache",
+          "Mutiara Noverita",
+          "Doja Cat",
+          "SZA"
         ],
-        correctAnswerId: 2,
+        correctAnswerId: 1,
         imageUrl: null
       }
     ]
@@ -373,10 +373,10 @@ export const levelsDatabase = [
         wish: "hai kak, i just want to tell you that you are really amazing! i cant take my eyes from you since the first day I joined UDF! i adore you really much hehe, happiest birthday kak muti!!! all the best for you❤️",
         questionText: "do you think I am an otaku?",
         questionOptions: [
-          "yes" ,
-          "kinda" ,
-          "no" ,
-          "definitely"
+          "sans" ,
+          "selow" ,
+          "buang dalem" ,
+          "yauda"
         ],
         correctAnswerId: 3,
         imageUrl: null
