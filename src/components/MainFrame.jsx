@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import {characterDatabase, itemsDatabase, levelsDatabase, purchaseTextDatabase} from '../database';
 import {Container, Button, Row, Col, Card, Modal, Stack} from "react-bootstrap";
 import _ from "lodash";
+import {useHistory} from 'react-router-dom';
+
 
 
 const renderAssets = (assets) => {
@@ -26,6 +28,7 @@ const renderAssets = (assets) => {
 const MainFrame = (props) => {
     const playerName = _.get(props, 'location.state.playerName', '');
     const playerTitleId = _.get(props, 'location.state.playerTitleId', 0);
+    const history = useHistory();
 
     const [isShopModalOpen, setShopModalOpen] = useState(false);
     const [purchaseText, setPurchaseText] = useState('');
@@ -144,13 +147,17 @@ const MainFrame = (props) => {
                             setIsCurrentQuestionAnswered(false);
                             setCurrentQuestionId(0);
                             setIsCurrentLevelAllAnswered(true);
+                            return history.push({
+                                pathname: '/thank-you',
+                                state: {correct: totalCorrectAnswers}
+                            });
                         }
                     }
                 >
                     Finish Game!
                 </Button>
             );
-        }
+        };
 
         const renderFinishLevelButton = () => {
             return (
@@ -173,7 +180,6 @@ const MainFrame = (props) => {
         const handleAnswerClick = (index, correctAnswerId, questionOptions) => {
             const isCorrect = currentQuestionId === 4 ? true : (index === correctAnswerId);
             const selectedAnswer = `selected answer: ${questionOptions[index]} <-> `;
-            console.log (isCorrect);
             setTotalCorrectAnswers(isCorrect ? totalCorrectAnswers+1 : totalCorrectAnswers);
             setCorrectAnswerText(isCorrect ?
                 `${selectedAnswer} 🟢 correct answer: ${questionOptions[correctAnswerId]}` :
@@ -189,6 +195,7 @@ const MainFrame = (props) => {
         //BUAT HANDLE ANSWERL CLICK FINAL LEVEL BIAR GA ITEM DATABASE INDEX OUT OF BOUND
 
         const renderNextQuestionButton = () => {
+            console.log({totalCorrectAnswers});
             return (
                 <Button
                     onClick={() => {

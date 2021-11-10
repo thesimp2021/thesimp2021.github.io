@@ -5,6 +5,7 @@ import LoadingScreen from './components/LoadingScreen'
 import MainFrame from "./components/MainFrame";
 import CreateCharacter from "./components/CreateCharacter";
 import Login from "./components/Login";
+import GameResult from "./components/GameResult";
 import './App.css';
 
 function App () {
@@ -16,6 +17,7 @@ function App () {
                     <Route path='/loading' render={(props) => <LoadingScreen {...props}/>} />
                     <Route path='/build' component={(props) => <CreateCharacter {...props} />} />
                     <Route path='/play' component={(props) => <MainFrame {...props} />} />
+                    <Route path='/thank-you' component={(props) => <GameResult {...props} />} />
                 </Switch>
             </Router>
         </div>

@@ -448,3 +448,16 @@ export const purchaseTextDatabase = [
     "Cintailah ploduk2 Indonesia 🇮🇩",
     "No netflix chill only 👩‍❤️‍💋‍👨",
 ]
+
+export const imageDb = [
+  alfat,
+  alifirza,
+  azka,
+  jeje,
+  kevin,
+  mae,
+  putrigaluh,
+  resty,
+  salza,
+  iqi
+];
