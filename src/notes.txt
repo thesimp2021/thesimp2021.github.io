@@ -6,17 +6,3 @@ my dram comes true making game, minimalist look but looking super modern
 i hate frontend programming, but i manage to go through it, code deployment, project setup
 this app is inspired by derekdelgaudio, identity "the rook/mechanic", the 5 thumbnail level display, rouletista
 
-
-FINISHLEVELRENDERLOGIC:
-----
-if (currentItem === netflix) {
-    if(levelFinished === true) return finaleButton;
-    return null
-}
-
-if (money === itemDatabase[currentLevel+1]) {
-    return finishLevelButton
-}
-
-return null;
----

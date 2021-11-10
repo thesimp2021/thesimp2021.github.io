@@ -192,6 +192,12 @@
   font-family:"Consolas" !important;
 }
 
+.final-quiz-modal {
+  background-color: forestgreen;
+  font-size: 2.3vh;
+  font-family:"Consolas" !important;
+}
+
 .quiz-modal-separator {
   margin: 2vh;
 }
@@ -215,6 +221,7 @@
 .padder{
   padding: 2vh;
   color: white;
+  cursor: pointer;
 }
 
 .text-kanan {

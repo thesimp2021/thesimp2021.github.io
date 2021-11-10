@@ -17,6 +17,7 @@ import mae from '../src/assets/images/wishes/mae.jpg';
 import putrigaluh from '../src/assets/images/wishes/putrigaluh.jpg';
 import resty from '../src/assets/images/wishes/resty.jpg';
 import salza from '../src/assets/images/wishes/salza.jpg';
+import iqi from '../src/assets/images/wishes/iqi.jpg';
 
 import bangkok from '../src/assets/images/cities/bangkok2.jpg';
 import jakarta from '../src/assets/images/cities/jakarta2.jpg';
@@ -31,7 +32,7 @@ export const levelsDatabase = [
     rewardPerQuestion: 500,
     cityName: 'Semarang',
     imageUrl: semarang,
-    description: "Ahh yes, the good ol' Semarang. The place where you were born, raised, and have become atteched to. Just like you, this city is hot as fuck! The blistering heat is the result of the good ol' capitalists that continues to extract... Aye holup this aint no leftist propagand LMAO. Besides the heat, the downside of this city is that they aint got no IMAX studio. How am I supposed to see that 70mm IMAX film bro?",
+    description: "Ahh yes, the good ol' Semarang. The place where you were born, raised, and have become attached to. Just like you, this city is hot as fuck! The blistering heat is the result of the good ol' capitalists that continues to extract... Aye holup this aint no leftist propagand LMAO. Besides the heat, the downside of this city is that they aint got no IMAX studio. How am I supposed to see that 70mm IMAX film bro?",
     requiredItemDesc: 'Welp, at least there\'s a fancy DP mall that got a fancy movie theater. buy some tix, lets check the mall out yeah?',
     quizzes: [
       {
@@ -86,7 +87,7 @@ export const levelsDatabase = [
         wish: "I wish you a very happy birthday, si cantik nan pintar, tekun dan rajin belajar. semoga dilancarkan rezekinya dan diberikan kesehatan yang baik. you truly are an inspiration, with love, Angga <3",
         questionText: "aku asalnya darimana hayo",
         questionOptions: [
-          "not available"
+          "daritadi"
         ],
         correctAnswerId: 0,
         imageUrl: null
@@ -368,18 +369,18 @@ export const levelsDatabase = [
     quizzes: [
       {
         id: 0,
-        authorName: "Maudy Widya Putri",
-        authorCoolName: "your admirer since Day1",
-        wish: "hai kak, i just want to tell you that you are really amazing! i cant take my eyes from you since the first day I joined UDF! i adore you really much hehe, happiest birthday kak muti!!! all the best for you❤️",
-        questionText: "do you think I am an otaku?",
+        authorName: "Rayhan Shidqi 💘 ",
+        authorCoolName: "The Mechanic",
+        wish: "happiest birthday sayang",
+        questionText: "Desember jadi buang dalem kan bubu? 😞",
         questionOptions: [
-          "sans" ,
-          "selow" ,
-          "buang dalem" ,
-          "yauda"
+          "maybe" ,
+          "ga" ,
+          "iya sayang 😘" ,
+          "wE'lL seE"
         ],
-        correctAnswerId: 3,
-        imageUrl: null
+        correctAnswerId: 2,
+        imageUrl: iqi
       }]
   }
 ];
